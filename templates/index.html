@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPA Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        form { display: inline-block; margin-top: 20px; }
+        input { margin: 5px; padding: 8px; }
+        button { padding: 10px; background-color: blue; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h1>GPA Calculator</h1>
+    <form method="post">
+        {% for subject, weight in subjects %}
+            <label>{{ subject }} (Weight: {{ weight }})</label>
+            <input type="number" name="marks" min="0" max="100" required><br>
+        {% endfor %}
+        <button type="submit">Calculate GPA</button>
+    </form>
+    {% if gpa is not none %}
+        <h2>Your GPA: {{ gpa }}</h2>
+    {% endif %}
+</body>
+</html>
