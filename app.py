@@ -16,7 +16,7 @@ subjects = [
 
 def calculate_gpa(marks_list):
     total_weightage = sum(weight for _, weight in subjects)
-    total_points = sum(((int(marks) // 10) + 1) * weight for marks, (_, weight) in zip(marks_list, subjects))
+    total_points = sum((min((int(marks) // 10) + 1, 10)) * weight for marks, (_, weight) in zip(marks_list, subjects))
     return round(total_points / total_weightage, 2) if total_weightage else 0
 
 @app.route('/', methods=['GET', 'POST'])
